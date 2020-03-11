@@ -10,17 +10,20 @@ class TodoList extends Component {
             {
                 id: shortid.generate(),
                 text: "Todo 1",
-                complete: false
+                complete: false,
+                childToggle: false
             },
             {
                 id: shortid.generate(),
                 text: "Todo 2",
-                complete: false
+                complete: false,
+                childToggle: false
             },
             {
                 id: shortid.generate(),
                 text: "Todo 3",
-                complete: false
+                complete: false,
+                childToggle: false
             }
         ]
     };
@@ -55,6 +58,21 @@ class TodoList extends Component {
         })
     }
 
+    toggleChildInput = (id) => {
+        this.setState({
+            todos: this.state.todos.map(todo => {
+                if (todo.id === id) {
+                    return {
+                        ...todo,
+                        childToggle: !todo.childToggle
+                    }
+                } else {
+                    return todo;
+                }
+            })
+        })
+    }
+
     render() {
         return (
             <div className="todo-header">
@@ -62,12 +80,13 @@ class TodoList extends Component {
                 <ul>
                     {this.state.todos.map(todo => (
                         <Todo
-                        key={todo.id}
-                        parentComplete={() => this.parentComplete(todo.id)}
-                        todo={todo}
+                            key={todo.id}
+                            parentComplete={() => this.parentComplete(todo.id)}
+                            toggleChildInput={() => this.toggleChildInput(todo.id)}
+                            todo={todo}
                         // addChild={this.addChild}
                         />
-                        ))}
+                    ))}
                 </ul>
             </div>
         );

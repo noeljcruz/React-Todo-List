@@ -21,7 +21,7 @@ class Todo extends Component {
                 id: shortid.generate(),
                 text: "Child 3",
                 complete: false,
-            }  
+            }
         ]
     }
 
@@ -40,7 +40,7 @@ class Todo extends Component {
             })
         })
     }
-    
+
     render() {
         // console.log(this.props);
         return (
@@ -54,15 +54,24 @@ class Todo extends Component {
                     type="checkbox"
                     onClick={this.props.parentComplete} />
                 {this.props.todo.text}
-                <button className="addChild" onClick={this.props.addChild}>+</button>
+                <button className="addChild" onClick={this.props.toggleChildInput}>+</button>
+                <form onSubmit={this.handleSubmit}>
+                    <button className="addTask">+</button>
+                    <input
+                        name="text"
+                        value={this.state.text}
+                        onChange={this.handleChange}
+                        placeholder="Add Task">
+                    </input>
+                </form>
                 <ul>
-                {this.state.subtodos.map(subtodo => (
+                    {this.state.subtodos.map(subtodo => (
                         <SubTodo
-                        key={subtodo.id}
-                        childComplete={() => this.childComplete(subtodo.id)}
-                        subtodo={subtodo}
+                            key={subtodo.id}
+                            childComplete={() => this.childComplete(subtodo.id)}
+                            subtodo={subtodo}
                         />
-                        ))}
+                    ))}
                 </ul>
             </li>
         )

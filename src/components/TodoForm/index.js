@@ -39,7 +39,6 @@ class TodoForm extends Component {
                         onChange={this.handleChange}
                         placeholder="Add Task">
                     </input>
-
                 </form>
             </div>
         )
