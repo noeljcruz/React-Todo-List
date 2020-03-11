@@ -12,7 +12,6 @@ Features include:
 * Collapsible Display
 * Linked Parent/Child Completion
 
-
 ![Todo Gif](./public/images/appGif.gif)
 
 ## BUILT WITH:
@@ -21,6 +20,5 @@ Features include:
 * Short Id, ID Generator
 * Pure CSS
 
-
 ## DEPLOYED TO:
-[Heroku](https://errand-list.herokuapp.com)
+[Heroku](https://react-todo-list-njc.herokuapp.com/)
